@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BasicInformationComponent } from './basic-information/basic-information.component';
 import { ImagePathPipePipe } from './image-path.pipe';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ImagePathPipePipe } from './image-path.pipe';
     FooterComponent,
     PageNotFoundComponent,
     BasicInformationComponent,
-    ImagePathPipePipe
+    ImagePathPipePipe,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

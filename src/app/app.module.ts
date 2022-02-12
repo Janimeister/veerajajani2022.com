@@ -14,6 +14,7 @@ import { RsvpComponent } from './rsvp/rsvp.component';
 import { GettingThereComponent } from './getting-there/getting-there.component';
 import { StayingComponent } from './staying/staying.component';
 import { GiftingComponent } from './gifting/gifting.component';
+import {DividerModule} from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GiftingComponent } from './gifting/gifting.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    TabMenuModule
+    TabMenuModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

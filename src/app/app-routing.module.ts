@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BasicInformationComponent } from './basic-information/basic-information.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: 'basic-information', component: BasicInformationComponent}
+// { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ];
 
 @NgModule({

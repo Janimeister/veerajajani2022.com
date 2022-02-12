@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
 
   PathToImage: string;
   
-  constructor() {
+  constructor() { 
     this.PathToImage = './assets/images/veera_jani.png'
   }
 

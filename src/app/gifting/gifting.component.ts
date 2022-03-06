@@ -10,9 +10,9 @@ export class GiftingComponent implements OnInit {
   PathToImage: string;
   
   constructor() { 
-    this.PathToImage = './assets/images/veera_jani.png'
+    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
   }
-  
+
   ngOnInit(): void {
   }
 

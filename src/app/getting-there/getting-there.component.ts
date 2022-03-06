@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./getting-there.component.scss']
 })
 export class GettingThereComponent implements OnInit {
-  
+
   PathToImage: string;
   
   constructor() { 
-    this.PathToImage = './assets/images/veera_jani.png'
+    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
   }
   ngOnInit(): void {
   }

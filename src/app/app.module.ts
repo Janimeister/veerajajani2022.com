@@ -18,6 +18,7 @@ import {DividerModule} from 'primeng/divider';
 import {GMapModule} from 'primeng/gmap';
 import { GoogleformsComponent } from './googleforms/googleforms.component';
 import { GooglemapsComponent } from './googlemaps/googlemaps.component';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GooglemapsComponent } from './googlemaps/googlemaps.component';
     GiftingComponent,
     GoogleformsComponent,
     GooglemapsComponent,
+    PlaceholderComponent,
   ],
   imports: [
     BrowserModule,

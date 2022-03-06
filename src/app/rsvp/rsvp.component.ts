@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RsvpComponent implements OnInit {
 
-  constructor() { }
+  PathToImage: string;
+  
+  constructor() { 
+    this.PathToImage = './assets/images/ilmoittautuminen vihreä.jpg'
+  }
 
   ngOnInit(): void {
   }

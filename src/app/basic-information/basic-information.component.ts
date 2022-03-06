@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInformationComponent implements OnInit {
 
+  PathToImage: string;
+  
   constructor() { 
+    this.PathToImage = './assets/images/veera_jani.png'
   }
 
   ngOnInit(): void {

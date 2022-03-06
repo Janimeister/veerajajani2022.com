@@ -15,6 +15,9 @@ import { GettingThereComponent } from './getting-there/getting-there.component';
 import { StayingComponent } from './staying/staying.component';
 import { GiftingComponent } from './gifting/gifting.component';
 import {DividerModule} from 'primeng/divider';
+import {GMapModule} from 'primeng/gmap';
+import { GoogleformsComponent } from './googleforms/googleforms.component';
+import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,16 @@ import {DividerModule} from 'primeng/divider';
     GettingThereComponent,
     StayingComponent,
     GiftingComponent,
+    GoogleformsComponent,
+    GooglemapsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     TabMenuModule,
-    DividerModule
+    DividerModule,
+    GMapModule
   ],
   providers: [],
   bootstrap: [AppComponent]

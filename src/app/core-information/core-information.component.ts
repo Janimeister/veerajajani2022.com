@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoreInformationComponent implements OnInit {
 
-  constructor() { }
+  PathToImage: String;
+
+  constructor() { 
+    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
+  }
+  
 
   ngOnInit(): void {
   }

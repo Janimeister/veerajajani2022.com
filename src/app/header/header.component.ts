@@ -1,3 +1,4 @@
+import { GiftingComponent } from './../gifting/gifting.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   PathToImage: string;
-  
+
   constructor() { 
     this.PathToImage = './assets/images/veera_jani.png'
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-
 }

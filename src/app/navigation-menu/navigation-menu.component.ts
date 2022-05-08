@@ -8,19 +8,22 @@ import {MenuItem} from 'primeng/api';
 })
 export class NavigationMenuComponent implements OnInit {
 
-  items: MenuItem[] = [];
+  items!: MenuItem[];
+  activeItem!: MenuItem;
+
 
   constructor() { }
 
   ngOnInit(): void {
     this.items = [
-      {label: 'Etusivu', icon: 'pi pi-fw pi-home'},
-      {label: 'Juhlapaikka', icon: ''},
-      {label: 'Majoitus', icon: ''},
-      {label: 'FAQ', icon: ''},
-      {label: 'Tietoa sivusta', icon: ''}
+      {label: 'Mitä, Missä, Milloin', routerLink: "/mitamissamilloin"},
+      {label: 'Majapaikkoja', routerLink: "/majapaikkoja"},
+      {label: 'Muistaminen', routerLink: "/muistaminen"},
+      {label: 'Kulkeminen', routerLink: "/kulkeminen"},
+      {label: 'Ilmoittautuminen', routerLink: "/ilmoittautuminen"},
+      {label: 'UKK', routerLink: "/ukk"}
   ];
-
+  this.activeItem = this.items[0];
   }
 
 }

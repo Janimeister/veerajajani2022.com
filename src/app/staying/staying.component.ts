@@ -10,7 +10,7 @@ export class StayingComponent implements OnInit {
   PathToImage: string;
   
   constructor() { 
-    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
+    this.PathToImage = './assets/images/majapaikkoja_vihrea.jpg'
   }
 
   ngOnInit(): void {

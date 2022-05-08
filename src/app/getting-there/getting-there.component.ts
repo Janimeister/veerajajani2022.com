@@ -10,7 +10,7 @@ export class GettingThereComponent implements OnInit {
   PathToImage: string;
   
   constructor() { 
-    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
+    this.PathToImage = './assets/images/kulkeminen.png'
   }
   ngOnInit(): void {
   }

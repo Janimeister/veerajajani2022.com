@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class GettingThereComponent implements OnInit {
 
   PathToImage: string;
+  PathToMap: string;
   
   constructor() { 
-    this.PathToImage = './assets/images/kulkeminen.png'
+    this.PathToImage = './assets/images/kulkeminen.png';
+    this.PathToMap = './assets/images/kartta.png'
   }
   ngOnInit(): void {
   }

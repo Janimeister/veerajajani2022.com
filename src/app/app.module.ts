@@ -19,6 +19,7 @@ import { GooglemapsComponent } from './googlemaps/googlemaps.component';
 import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FaqComponent } from './faq/faq.component';
+import { ProgramComponent } from './program/program.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FaqComponent } from './faq/faq.component';
     PlaceholderComponent,
     RegistrationComponent,
     FaqComponent,
+    ProgramComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ export class NavigationMenuComponent implements OnInit {
       {label: 'Muistaminen', routerLink: "/muistaminen"},
       {label: 'Kulkeminen', routerLink: "/kulkeminen"},
       {label: 'Ilmoittautuminen', routerLink: "/ilmoittautuminen"},
+      {label: 'Ohjelma', routerLink: "/ohjelma"},
       {label: 'UKK', routerLink: "/ukk"}
   ];
   this.activeItem = this.items[0];

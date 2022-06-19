@@ -7,6 +7,7 @@ import { GiftingComponent } from './gifting/gifting.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProgramComponent } from './program/program.component';
 
 const routes: Routes = [
  { path: '', component: BasicInformationComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
  { path: 'mitamissamilloin', component: BasicInformationComponent},
  { path: 'kulkeminen', component: GettingThereComponent},
  { path: 'ilmoittautuminen', component: RegistrationComponent},
+ { path: 'ohjelma', component: ProgramComponent},
  { path: 'ukk', component: FaqComponent},
  { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];

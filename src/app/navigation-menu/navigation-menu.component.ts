@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 
 @Component({
+  standalone: false,
   selector: 'app-navigation-menu',
   templateUrl: './navigation-menu.component.html',
   styleUrls: ['./navigation-menu.component.scss']
@@ -9,8 +10,6 @@ import {MenuItem} from 'primeng/api';
 export class NavigationMenuComponent implements OnInit {
 
   items!: MenuItem[];
-  activeItem!: MenuItem;
-
 
   constructor() { }
 
@@ -23,8 +22,7 @@ export class NavigationMenuComponent implements OnInit {
       {label: 'Ilmoittautuminen', routerLink: "/ilmoittautuminen"},
       {label: 'Ohjelma', routerLink: "/ohjelma"},
       {label: 'UKK', routerLink: "/ukk"}
-  ];
-  this.activeItem = this.items[0];
+    ];
   }
 
 }

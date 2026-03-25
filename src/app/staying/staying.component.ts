@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-staying',
   templateUrl: './staying.component.html',
   styleUrls: ['./staying.component.scss']

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-getting-there',
   templateUrl: './getting-there.component.html',
   styleUrls: ['./getting-there.component.scss']

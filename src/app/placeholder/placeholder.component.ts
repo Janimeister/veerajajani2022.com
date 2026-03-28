@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-placeholder',
+  standalone: false,
   templateUrl: './placeholder.component.html',
   styleUrls: ['./placeholder.component.scss']
 })
-export class PlaceholderComponent implements OnInit {
-
-  PathToImage: String;
-
-  constructor() { 
-    this.PathToImage = './assets/images/veera_jani.png'
-  }
-
-  ngOnInit(): void {
-  }
-
+export class PlaceholderComponent {
+  PathToImage = './assets/images/veera_jani.png';
 }

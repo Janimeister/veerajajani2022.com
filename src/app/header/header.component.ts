@@ -1,19 +1,11 @@
-import { GiftingComponent } from './../gifting/gifting.component';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
+  standalone: false,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  PathToImage: string;
-
-  constructor() { 
-    this.PathToImage = './assets/images/veera_jani.png'
-  }
-
-  ngOnInit() {
-  }
+export class HeaderComponent {
+  PathToImage = './assets/images/veera_jani.png';
 }

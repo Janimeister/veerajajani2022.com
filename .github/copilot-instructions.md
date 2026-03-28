@@ -7,11 +7,12 @@ This is the wedding website for **Veera ja Jani 2022** — a static-content Angu
 ## Tech Stack
 
 - **Framework**: Angular 21 (TypeScript ~5.9)
-- **UI Libraries**: PrimeNG 21, Bootstrap 5.3
+- **UI Libraries**: PrimeNG 21 (with `@primeuix/themes`), Bootstrap 5.3
 - **CDK**: `@angular/cdk` (required peer dep for PrimeNG 21)
+- **Theming**: PrimeNG Lara preset via `providePrimeNG` with custom `WeddingPreset` (defined in `app.module.ts`)
 - **Styling**: SCSS (per-component stylesheets)
-- **Testing**: Jasmine + Karma
-- **Build tool**: Angular CLI (`ng`)
+- **Testing**: Jasmine + Karma (unit), Playwright (e2e)
+- **Build tool**: Angular CLI (`ng`) with `@angular/build:application` builder
 
 ## Project Structure
 
@@ -25,7 +26,7 @@ src/
     gifting/             # Gift registry information
     googlemaps/          # Embedded Google Maps component
     header/              # Site header / hero image
-    navigation-menu/     # Bootstrap nav-tabs navigation bar
+    navigation-menu/     # PrimeNG Tabs navigation (p-tabs / p-tablist / p-tab)
     page-not-found/      # 404 page
     placeholder/         # Generic placeholder component
     program/             # Wedding program / schedule
@@ -34,6 +35,8 @@ src/
     staying/             # Accommodation options
   assets/                # Static assets (images, etc.)
   environments/          # environment.ts / environment.prod.ts
+e2e/                     # Playwright end-to-end tests
+.github/workflows/       # GitHub Actions deploy workflow
 ```
 
 ## Common Commands
@@ -43,6 +46,7 @@ src/
 | Start dev server | `npm start` (serves on http://localhost:4200) |
 | Production build | `npm run build` |
 | Run unit tests | `npm test` |
+| Run e2e tests | `npx playwright test` |
 | Angular CLI | `npx ng <command>` |
 
 ## Code Conventions
@@ -54,8 +58,8 @@ src/
 - **`moduleResolution`** is set to `"bundler"` (required for Angular 17+ ESM exports).
 - Generate new components with `npx ng generate component <name>` so the CLI scaffolds all four files and updates `AppModule` automatically. Remember to add `standalone: false` to the generated `@Component` decorator.
 - Keep components in `src/app/`; there is currently no feature-module splitting.
-- **Navigation** uses Bootstrap `nav-tabs` with `routerLink`/`routerLinkActive` directives — `TabMenuModule` (PrimeNG) was removed in PrimeNG 20.
-- **`GMapModule`** was removed in PrimeNG 17 and is no longer used.
+- **Navigation** uses PrimeNG 21 `Tabs` component (`p-tabs`, `p-tablist`, `p-tab` from `primeng/tabs`) with `TabsModule`. The old `TabMenuModule` was removed in PrimeNG 17+. Route changes are handled programmatically via `Router` in `NavigationMenuComponent`.
+- **PrimeNG theming** is configured via `providePrimeNG` in `AppModule` providers using a custom `WeddingPreset` (based on `Lara` from `@primeuix/themes/lara` with `definePreset`). Dark mode is disabled. Do **not** add `primeng/resources/primeng.min.css` or theme CSS paths to `angular.json` — PrimeNG 21 uses embedded component styles.
 
 ## Testing
 
@@ -63,9 +67,17 @@ Unit tests use **Jasmine** and run in a headless Chrome via **Karma**. Every com
 
 - Use `provideRouter([])` in test `providers` instead of the removed `RouterTestingModule`.
 - The `require.context` webpack API has been removed from `test.ts`; do not re-add it.
+- PrimeNG component tests should import the relevant module (e.g. `TabsModule`) in the test bed.
+
+End-to-end tests use **Playwright** and live in `e2e/`. The Playwright config (`playwright.config.ts`) auto-starts the dev server. Run `npx playwright test` locally. In CI, Playwright tests run as part of the GitHub Actions deploy workflow.
+
+## Deployment
+
+The project deploys to **GitHub Pages** via a GitHub Actions workflow (`.github/workflows/deploy.yml`). On push to `main`, the workflow:
+1. Runs Playwright e2e tests
+2. Builds the production bundle
+3. Deploys to GitHub Pages
 
 ## Dependencies
 
 Add new dependencies with `npm install <package>` and import the corresponding Angular module in `AppModule` (`src/app/app.module.ts`). Prefer PrimeNG or Bootstrap components over adding new UI libraries.
-
-Note: PrimeNG 21 uses embedded component styles — do **not** add `primeng/resources/primeng.min.css` or theme CSS paths to `angular.json`.

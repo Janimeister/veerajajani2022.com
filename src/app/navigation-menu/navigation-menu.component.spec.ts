@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { TabsModule } from 'primeng/tabs';
 
 import { NavigationMenuComponent } from './navigation-menu.component';
 
@@ -8,7 +10,9 @@ describe('NavigationMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationMenuComponent ]
+      declarations: [ NavigationMenuComponent ],
+      imports: [ TabsModule ],
+      providers: [provideRouter([])],
     })
     .compileComponents();
   });

@@ -1,4 +1,8 @@
 
-<div class="card">
-    <p-tabMenu [model]="items" [scrollable]="true" [activeItem]="activeItem"></p-tabMenu>
-</div>
+<p-tabs [value]="activeRoute" (valueChange)="onTabChange($event)" scrollable>
+  <p-tablist>
+    @for (item of items; track item.route) {
+      <p-tab [value]="item.route">{{ item.label }}</p-tab>
+    }
+  </p-tablist>
+</p-tabs>

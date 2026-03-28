@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-basic-information',
+  standalone: false,
   templateUrl: './basic-information.component.html',
   styleUrls: ['./basic-information.component.scss']
 })
-export class BasicInformationComponent implements OnInit {
-
-  PathToImage: string;
-  
-  constructor() { 
-    this.PathToImage = './assets/images/MitäMissäMilloin kulta.jpg'
-  }
-
-  ngOnInit(): void {
-  }
-
+export class BasicInformationComponent {
+  PathToImage = './assets/images/MitäMissäMilloin kulta.jpg';
 }

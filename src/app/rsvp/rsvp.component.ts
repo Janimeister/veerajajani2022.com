@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-rsvp',
+  standalone: false,
   templateUrl: './rsvp.component.html',
   styleUrls: ['./rsvp.component.scss']
 })
-export class RsvpComponent implements OnInit {
-
-  PathToImage: string;
-  
-  constructor() { 
-    this.PathToImage = './assets/images/ilmoittautuminen vihreä.jpg'
-  }
-
-  ngOnInit(): void {
-  }
-
+export class RsvpComponent {
+  PathToImage = './assets/images/ilmoittautuminen vihreä.jpg';
 }

@@ -30,6 +30,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Run unit tests
+        run: npx ng test --watch=false --browsers=ChromeHeadless
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 

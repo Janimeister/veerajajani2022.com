@@ -24,7 +24,6 @@ src/
     footer/              # Footer component
     getting-there/       # Travel directions & map
     gifting/             # Gift registry information
-    googlemaps/          # Embedded Google Maps component
     header/              # Site header / hero image
     navigation-menu/     # PrimeNG Tabs navigation (p-tabs / p-tablist / p-tab)
     page-not-found/      # 404 page

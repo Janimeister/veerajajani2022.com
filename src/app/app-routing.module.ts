@@ -10,7 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProgramComponent } from './program/program.component';
 
 const routes: Routes = [
- { path: '', component: BasicInformationComponent},
+ { path: '', redirectTo: 'mitamissamilloin', pathMatch: 'full' },
  { path: 'muistaminen', component: GiftingComponent },
  { path: 'majapaikkoja', component: StayingComponent},
  { path: 'mitamissamilloin', component: BasicInformationComponent},

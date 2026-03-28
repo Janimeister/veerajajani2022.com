@@ -57,7 +57,7 @@ jobs:
 
       - run: npm ci
 
-      - run: npx ng build --base-href /veerajajani2022.com/
+      - run: npx ng build --base-href /
 
       - name: Copy index.html to 404.html for SPA routing
         run: cp dist/veerajajani2022.com/browser/index.html dist/veerajajani2022.com/browser/404.html

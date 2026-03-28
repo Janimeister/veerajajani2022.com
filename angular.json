@@ -32,6 +32,10 @@
                 "input": "src"
               },
               {
+                "glob": "CNAME",
+                "input": "src"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"

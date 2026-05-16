@@ -9,6 +9,22 @@ permissions:
   contents: read
 
 jobs:
+  build:
+    name: Build & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (type check + Angular production build)
+        run: npx ng build --base-href /
+
   unit:
     name: Unit Tests
     runs-on: ubuntu-latest

@@ -1,9 +1,7 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_run:
-    workflows: ["Tests"]
-    types: [completed]
+  push:
     branches: [main]
   workflow_dispatch:
 
@@ -15,25 +13,38 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  tests:
+    name: Tests
+    uses: ./.github/workflows/test.yml
+    permissions:
+      contents: read
+
   build:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    name: Build Pages artifact
+    needs: tests
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
+          cache-dependency-path: package-lock.json
 
       - run: npm ci
 
-      - run: npx ng build --base-href /
+      - run: npm run build -- --base-href /
 
       - name: Copy index.html to 404.html for SPA routing
         run: cp dist/veerajajani2022.com/browser/index.html dist/veerajajani2022.com/browser/404.html
+
+      - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -42,7 +53,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:

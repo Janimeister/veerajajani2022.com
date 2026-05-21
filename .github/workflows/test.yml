@@ -4,7 +4,7 @@ on:
   pull_request:
   workflow_call:
     inputs:
-      called-from-deploy:
+      called_from_deploy:
         description: Set to true when called from the deploy workflow to prevent cancelling in-flight deploys
         type: boolean
         default: false
@@ -18,7 +18,7 @@ env:
 
 concurrency:
   group: tests-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ !(github.event_name == 'workflow_call' && inputs.called-from-deploy) }}
+  cancel-in-progress: ${{ !(github.event_name == 'workflow_call' && inputs.called_from_deploy) }}
 
 jobs:
   build:

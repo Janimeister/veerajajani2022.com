@@ -30,6 +30,9 @@ chrome-profiler-events*.json
 !.vscode/extensions.json
 .history/*
 
+# generated PrimeUI license key (see scripts/generate-primeui-license.mjs)
+/src/environments/primeui-license.ts
+
 # misc
 /.angular/cache
 /.sass-cache

@@ -6,12 +6,12 @@ This is the wedding website for **Veera ja Jani 2022** — a static-content Angu
 
 ## Tech Stack
 
-- **Framework**: Angular 21 (TypeScript ~5.9)
-- **UI Libraries**: PrimeNG 21 (with `@primeuix/themes`), Bootstrap 5.3
-- **CDK**: `@angular/cdk` (required peer dep for PrimeNG 21)
+- **Framework**: Angular 22 (TypeScript ~6.0)
+- **UI Libraries**: PrimeNG 22 (with `@primeuix/themes` 3), Bootstrap 5.3
+- **CDK**: `@angular/cdk` (required peer dep for PrimeNG 22)
 - **Theming**: PrimeNG Lara preset via `providePrimeNG` with custom `WeddingPreset` (defined in `app.module.ts`)
 - **Styling**: SCSS (per-component stylesheets)
-- **Testing**: Jasmine + Karma (unit), Playwright (e2e)
+- **Testing**: Vitest via `@angular/build:unit-test` (unit), Playwright (e2e)
 - **Build tool**: Angular CLI (`ng`) with `@angular/build:application` builder
 
 ## Project Structure
@@ -57,15 +57,18 @@ e2e/                     # Playwright end-to-end tests
 - **`moduleResolution`** is set to `"bundler"` (required for Angular 17+ ESM exports).
 - Generate new components with `npx ng generate component <name>` so the CLI scaffolds all four files and updates `AppModule` automatically. Remember to add `standalone: false` to the generated `@Component` decorator.
 - Keep components in `src/app/`; there is currently no feature-module splitting.
-- **Navigation** uses PrimeNG 21 `Tabs` component (`p-tabs`, `p-tablist`, `p-tab` from `primeng/tabs`) with `TabsModule`. The old `TabMenuModule` was removed in PrimeNG 17+. Route changes are handled programmatically via `Router` in `NavigationMenuComponent`.
-- **PrimeNG theming** is configured via `providePrimeNG` in `AppModule` providers using a custom `WeddingPreset` (based on `Lara` from `@primeuix/themes/lara` with `definePreset`). Dark mode is disabled. Do **not** add `primeng/resources/primeng.min.css` or theme CSS paths to `angular.json` — PrimeNG 21 uses embedded component styles.
+- **Navigation** uses PrimeNG 22 `Tabs` component (`p-tabs`, `p-tablist`, `p-tab` from `primeng/tabs`) with `TabsModule`. The old `TabMenuModule` was removed in PrimeNG 17+. Route changes are handled programmatically via `Router` in `NavigationMenuComponent`.
+- **PrimeNG theming** is configured via `providePrimeNG` in `AppModule` providers using a custom `WeddingPreset` (based on `Lara` from `@primeuix/themes/lara` with `definePreset`). Dark mode is disabled. Do **not** add `primeng/resources/primeng.min.css` or theme CSS paths to `angular.json` — PrimeNG 22 uses embedded component styles.
+- **`changeDetection: ChangeDetectionStrategy.Eager`** is set on every component. Angular 22 defaults to `OnPush`; the v22 migration added `Eager` to preserve the previous behaviour.
 
 ## Testing
 
-Unit tests use **Jasmine** and run in a headless Chrome via **Karma**. Every component has a corresponding `*.spec.ts` file. Run `npm test` to execute them. CI runs tests in headless mode (`--no-sandbox`).
+Unit tests use **Vitest** through the `@angular/build:unit-test` builder (`runner: "vitest"`) with a `jsdom` environment. Every component has a corresponding `*.spec.ts` file. Run `npm test` to execute them; CI uses `npm test -- --watch=false`.
 
+- Vitest globals (`describe`, `it`, `expect`, `vi`) are enabled, so no explicit imports are needed. `tsconfig.spec.json` pulls in `vitest/globals` types.
+- `src/test-setup.ts` is registered via the `setupFiles` test option and stubs `ResizeObserver`, which jsdom lacks but PrimeNG's `p-tablist` requires.
+- The `test` target builds via the `testing` build configuration in `angular.json` (`buildTarget: ":build:testing"`), which adds the zone.js testing polyfill.
 - Use `provideRouter([])` in test `providers` instead of the removed `RouterTestingModule`.
-- The `require.context` webpack API has been removed from `test.ts`; do not re-add it.
 - PrimeNG component tests should import the relevant module (e.g. `TabsModule`) in the test bed.
 
 End-to-end tests use **Playwright** and live in `e2e/`. The Playwright config (`playwright.config.ts`) auto-starts the dev server. Run `npx playwright test` locally. In CI, Playwright tests run as part of the GitHub Actions deploy workflow.

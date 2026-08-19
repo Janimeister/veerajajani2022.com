@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -12,6 +12,7 @@ interface NavItem {
   selector: 'app-navigation-menu',
   standalone: false,
   templateUrl: './navigation-menu.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent implements OnInit, OnDestroy {

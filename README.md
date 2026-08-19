@@ -4,7 +4,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## PrimeNG / PrimeUI license key
+
+Starting with PrimeNG 22 the PrimeNG packages are licensed under the [PrimeUI License](https://primeui.dev/licenses/community) and require a license key at runtime; without one PrimeNG logs a warning and shows an "Invalid PrimeUI License" banner.
+
+Set the key in the `PRIMEUI_LICENSE` environment variable before building or serving:
+
+```powershell
+$env:PRIMEUI_LICENSE = '<your key>'
+npm start
+```
+
+`scripts/generate-primeui-license.mjs` runs automatically on `npm install`, `npm start`, `npm run build`, `npm run watch` and `npm test`, and writes the key into the git-ignored file `src/environments/primeui-license.ts`, which `AppModule` passes to `providePrimeNG({ license: ... })`. The key is never committed. In GitHub Actions the value comes from the `PRIMEUI_LICENSE` repository secret.
 
 ## Code scaffolding
 

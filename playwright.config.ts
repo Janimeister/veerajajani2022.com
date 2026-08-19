@@ -16,7 +16,7 @@ export default defineConfig({
     { name: 'webkit', use: { browserName: 'webkit' } },
   ],
   webServer: {
-    command: 'npx ng serve --port 4200',
+    command: 'npm start -- --port 4200',
     port: 4200,
     reuseExistingServer: !process.env['CI'],
     timeout: 60000,

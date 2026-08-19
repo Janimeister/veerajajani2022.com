@@ -1,7 +1,9 @@
 # Third-Party Notices
 
-This project makes use of the following open source software packages.
+This project makes use of the following third-party software packages.
 Their licenses and attribution requirements are reproduced below.
+Most dependencies are open source; the PrimeNG / PrimeUI packages are commercially
+licensed and are listed separately under "Commercial / Proprietary Software".
 
 ---
 
@@ -148,37 +150,6 @@ SOFTWARE.
 
 ---
 
-### PrimeNG
-- **Package:** `primeng`
-- **License:** MIT
-- **Copyright:** © PrimeTek
-
-```
-The MIT License (MIT)
-
-Copyright (c) 2016-2024 PrimeTek
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
----
-
 ### zone.js
 - **Package:** `zone.js`
 - **License:** MIT
@@ -237,6 +208,78 @@ SOFTWARE.
 
 ---
 
+## Commercial / Proprietary Software
+
+### PrimeNG / PrimeUI
+- **Packages:** `primeng`, `@primeuix/themes` (and their transitive `@primeuix/*` / `@primeui/*` packages)
+- **License:** PrimeUI License (dual: Community License – free, or Commercial License – paid); **not** open source
+- **Copyright:** © PrimeTek Informatics
+
+> **Note:** PrimeNG was MIT licensed up to and including version 21. Starting with **PrimeNG 22** the
+> packages are distributed under the proprietary **PrimeUI License** by PrimeTek Informatics and a
+> valid license key is required at runtime. This project uses the free **Community License** and
+> supplies the key via the `PRIMEUI_LICENSE` environment variable (a GitHub Actions repository
+> secret), which is injected through `providePrimeNG({ license: ... })` in `src/app/app.module.ts`.
+> License verification is performed offline; no telemetry or remote connection is used.
+
+```
+# PrimeUI License
+
+This package is part of **PrimeUI**, a family of commercial UI libraries by PrimeTek Informatics.
+
+## How PrimeUI May Be Used
+
+PrimeUI may be used under one of two licenses. You choose the one that applies to you based on eligibility.
+
+### Community License (Free)
+
+Free for organizations that meet all of the following criteria:
+
+- Less than $1,000,000 USD in annual gross revenue
+- Fewer than 5 developers
+- Fewer than 10 employees
+- Less than $3,000,000 USD in venture capital or outside funding
+
+Individuals, students, non-profits, and non-commercial open source projects also qualify.
+
+The Community License provides full access to the core libraries and supports up to 4 developers.
+It requires annual renewal by confirming continued eligibility.
+
+### Commercial License (Paid)
+
+For organizations that do not qualify for the Community License.
+
+Licensed per developer, perpetual, with one year of updates included. Renewal is optional and
+extends access to new versions. The Commercial Suite also includes PrimeBlocks, Theme Designer,
+all PrimeUI Pro components, and Premium Support.
+
+## License Key
+
+A valid license key is required to use this software. License verification is performed offline,
+with no telemetry and no remote connection. A missing, invalid, or expired key may cause the
+software to display a license notice.
+
+## Full Terms
+
+The complete license terms, eligibility details, and renewal information are available at:
+
+- Community License: https://primeui.dev/licenses/community
+- Commercial License: https://primeui.dev/licenses/commercial
+
+## Restrictions
+
+This software is distributed as a compiled package. You may not reverse-engineer, decompile, or
+extract its source code, redistribute it as a component library or development tool, or remove its
+license mechanisms. Redistributing the software so that third parties can develop with it requires
+a separate OEM License. See the full terms for details.
+
+---
+
+© 2026 PrimeTek Informatics. All rights reserved.
+```
+
+---
+
 ## Fonts
 
 ### Lovely Garden
@@ -245,4 +288,4 @@ SOFTWARE.
 
 ---
 
-*This file was last updated: March 2026*
+*This file was last updated: August 2026*

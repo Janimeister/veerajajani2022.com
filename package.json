@@ -3,9 +3,15 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
+    "postinstall": "node scripts/generate-primeui-license.mjs",
+    "primeui:license": "node scripts/generate-primeui-license.mjs",
+    "prestart": "npm run primeui:license",
     "start": "ng serve",
+    "prebuild": "npm run primeui:license",
     "build": "ng build",
+    "prewatch": "npm run primeui:license",
     "watch": "ng build --watch --configuration development",
+    "pretest": "npm run primeui:license",
     "test": "ng test"
   },
   "private": true,

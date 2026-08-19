@@ -5,6 +5,7 @@ import { providePrimeNG } from 'primeng/config';
 import { TabsModule } from 'primeng/tabs';
 import { definePreset } from '@primeuix/themes';
 import Lara from '@primeuix/themes/lara';
+import { primeuiLicense } from '../environments/primeui-license';
 
 const WeddingPreset = definePreset(Lara, {
   components: {
@@ -87,6 +88,7 @@ import { ProgramComponent } from './program/program.component';
   ],
   providers: [
     providePrimeNG({
+      license: primeuiLicense,
       theme: {
         preset: WeddingPreset,
         options: {

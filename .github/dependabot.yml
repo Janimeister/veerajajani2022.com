@@ -15,8 +15,18 @@ updates:
           - "zone.js"
           - "primeng"
           - "@primeuix/*"
+          - "typescript"
+          - "vitest"
       dev-dependencies:
         dependency-type: development
+        # Keep Angular's runtime and build/test peers in the same PR.
+        exclude-patterns:
+          - "@angular/*"
+          - "zone.js"
+          - "primeng"
+          - "@primeuix/*"
+          - "typescript"
+          - "vitest"
     ignore:
       # The Angular 22 toolchain pins `peer typescript@">=6.0 <6.1"`, so both
       # major and minor TypeScript bumps break `npm ci`. Only patches are safe;
@@ -25,6 +35,10 @@ updates:
         update-types:
           - version-update:semver-major
           - version-update:semver-minor
+      # @angular/build 22 requires Vitest ^4.0.8; upgrade with the builder.
+      - dependency-name: vitest
+        update-types:
+          - version-update:semver-major
 
   - package-ecosystem: github-actions
     directory: /

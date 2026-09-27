@@ -113,3 +113,21 @@ To deploy, configure GitHub Pages to use **GitHub Actions** as its source and ad
 ## Further help
 
 Use `npx ng help` or the [Angular CLI reference](https://angular.dev/tools/cli).
+
+
+## CI and production smoke checks
+
+CI uses Node.js 24 and installs the exact npm version declared in `package.json` (`npm@11.19.0`). Actions are pinned to reviewed commit SHAs and updated through Dependabot. Playwright rejects focused (`test.only`) tests in CI and uploads HTML reports for every completed, non-cancelled run, including successful retries.
+
+Browser system dependency installation has two bounded attempts and fails clearly if both fail. The production build job and the deployment build both run a Chromium smoke check before the Pages artifact is uploaded. It checks application startup, script/style loading, and a direct deep link served from `404.html`, independently of external APIs.
+
+Run the same smoke check locally after building:
+
+```bash
+npm run build
+cp dist/veerajajani2022.com/browser/index.html dist/veerajajani2022.com/browser/404.html
+npx playwright install --with-deps chromium
+npm run test:production
+```
+
+The smoke check serves the existing build on port 4300 and writes its report to `playwright-production-report/`. It does not rebuild or start the development server.

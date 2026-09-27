@@ -12,7 +12,8 @@
     "prewatch": "npm run primeui:license",
     "watch": "ng build --watch --configuration development",
     "pretest": "npm run primeui:license",
-    "test": "ng test"
+    "test": "ng test",
+    "test:production": "playwright test --config=playwright.production.config.ts"
   },
   "private": true,
   "dependencies": {
@@ -41,5 +42,6 @@
     "jsdom": "^30.1.0",
     "typescript": "~6.0.3",
     "vitest": "^4.0.8"
-  }
+  },
+  "packageManager": "npm@11.19.0"
 }

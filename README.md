@@ -101,7 +101,7 @@ The tests in [e2e/app.spec.ts](e2e/app.spec.ts) cover navigation, page content, 
 
 ## CI and deployment
 
-[Tests](.github/workflows/test.yml) runs on pull requests, manual dispatch, and calls from the deployment workflow. Parallel jobs check the production build, unit tests, and Playwright tests. The Playwright tests run one job per browser in the official Playwright container image, whose tag follows the locked Playwright version, so they don't depend on the runner's apt mirror. Browser runs upload the HTML report for seven days.
+[Tests](.github/workflows/test.yml) runs on pull requests, manual dispatch, and calls from the deployment workflow. Parallel jobs check the production build, unit tests, and Playwright tests. The Playwright tests run one job per browser in the official Playwright container image, whose tag follows the locked Playwright version, and the build job runs its production smoke test in the same image, so neither depends on the runner's apt mirror. Browser runs upload the HTML report for seven days.
 
 To deploy, configure GitHub Pages to use **GitHub Actions** as its source and add the `PRIMEUI_LICENSE` repository secret. [Deploy to GitHub Pages](.github/workflows/deploy.yml) runs on pushes to `main` or manual dispatch. It:
 

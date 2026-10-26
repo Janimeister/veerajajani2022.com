@@ -25,9 +25,15 @@ concurrency:
   cancel-in-progress: ${{ !inputs['called_from_deploy'] }}
 
 jobs:
+  # Runs in the Playwright image too, so the production smoke test has
+  # Chromium without installing it from the runner's apt mirror.
   build:
     name: Build & Type Check
+    needs: playwright-image
     runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.playwright-image.outputs.image }}
+      options: --user 1001 --ipc=host
     timeout-minutes: 30
     env:
       PRIMEUI_LICENSE: ${{ secrets.PRIMEUI_LICENSE }}
@@ -55,9 +61,6 @@ jobs:
 
       - name: Add SPA fallback to the production build
         run: cp dist/veerajajani2022.com/browser/index.html dist/veerajajani2022.com/browser/404.html
-
-      - name: Install Chromium for the production smoke test
-        run: bash scripts/install-playwright.sh chromium
 
       - name: Smoke test the Pages artifact
         run: npm run test:production
@@ -100,8 +103,9 @@ jobs:
       - name: Run unit tests
         run: npm test -- --watch=false
 
-  # The E2E jobs run in the official Playwright image, which ships the browsers
-  # and their system libraries, so they never wait on the runner's apt mirror.
+  # The build and E2E jobs run in the official Playwright image, which ships the
+  # browsers and their system libraries, so they never wait on the runner's apt
+  # mirror.
   # Its tag must match the locked Playwright version, so read it from the
   # lockfile and Dependabot bumps carry the image along.
   playwright-image:

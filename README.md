@@ -17,7 +17,7 @@ Live site: [veerajajani2022.com](https://veerajajani2022.com).
 
 ## Getting started
 
-Use **Node.js 24** and npm, matching the GitHub Actions workflows.
+Use **Node.js 26** and npm, matching the GitHub Actions workflows.
 
 ```bash
 git clone https://github.com/Janimeister/veerajajani2022.com.git
@@ -101,7 +101,7 @@ The tests in [e2e/app.spec.ts](e2e/app.spec.ts) cover navigation, page content, 
 
 ## CI and deployment
 
-[Tests](.github/workflows/test.yml) runs on pull requests, manual dispatch, and calls from the deployment workflow. Three parallel jobs check the production build, unit tests, and Playwright tests. Failed browser runs upload the HTML report for seven days.
+[Tests](.github/workflows/test.yml) runs on pull requests, manual dispatch, and calls from the deployment workflow. Parallel jobs check the production build, unit tests, and Playwright tests. The Playwright tests run one job per browser in the official Playwright container image, whose tag follows the locked Playwright version, and the build job runs its production smoke test in the same image, so neither depends on the runner's apt mirror. Browser runs upload the HTML report for seven days.
 
 To deploy, configure GitHub Pages to use **GitHub Actions** as its source and add the `PRIMEUI_LICENSE` repository secret. [Deploy to GitHub Pages](.github/workflows/deploy.yml) runs on pushes to `main` or manual dispatch. It:
 
@@ -117,7 +117,7 @@ Use `npx ng help` or the [Angular CLI reference](https://angular.dev/tools/cli).
 
 ## CI and production smoke checks
 
-CI uses Node.js 24 and installs the exact npm version declared in `package.json` (`npm@12.2.1`). Actions are pinned to reviewed commit SHAs and updated through Dependabot. Playwright rejects focused (`test.only`) tests in CI and uploads HTML reports for every completed, non-cancelled run, including successful retries.
+CI uses Node.js 26 and installs the exact npm version declared in `package.json` (`npm@12.2.1`). Actions are pinned to reviewed commit SHAs and updated through Dependabot. Playwright rejects focused (`test.only`) tests in CI and uploads HTML reports for every completed, non-cancelled run, including successful retries.
 
 Browser system dependency installation has two bounded attempts and fails clearly if both fail. The production build job and the deployment build both run a Chromium smoke check before the Pages artifact is uploaded. It checks application startup, script/style loading, and a direct deep link served from `404.html`, independently of external APIs.
 
